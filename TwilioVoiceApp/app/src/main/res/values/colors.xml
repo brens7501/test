@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Twilio brand-inspired colors -->
+    <color name="twilioRed">#F22F46</color>
+    <color name="twilioRedDark">#D01B31</color>
+    <color name="twilioRedLight">#FF6B7D</color>
+    <color name="twilioBlue">#0D122B</color>
+    <color name="twilioBlueDark">#070B1A</color>
+    <color name="twilioBlueLight">#2C3454</color>
+    
+    <!-- Standard app colors -->
+    <color name="colorPrimary">@color/twilioRed</color>
+    <color name="colorPrimaryDark">@color/twilioRedDark</color>
+    <color name="colorPrimaryVariant">@color/twilioRedLight</color>
+    <color name="colorSecondary">@color/twilioBlue</color>
+    <color name="colorSecondaryVariant">@color/twilioBlueLight</color>
+    <color name="colorAccent">@color/twilioRed</color>
+    
+    <!-- Text colors -->
+    <color name="textPrimary">@color/twilioBlue</color>
+    <color name="textSecondary">#5A5A5A</color>
+    <color name="textDisabled">#9E9E9E</color>
+    <color name="textOnPrimary">#FFFFFF</color>
+    <color name="textOnSecondary">#FFFFFF</color>
+    
+    <!-- Background colors -->
+    <color name="background">#FFFFFF</color>
+    <color name="backgroundVariant">#F5F5F5</color>
+    <color name="backgroundElevated">#FFFFFF</color>
+    
+    <!-- Call screen specific colors -->
+    <color name="callConnecting">#FFA726</color>
+    <color name="callActive">#4CAF50</color>
+    <color name="callEnded">#F44336</color>
+    <color name="callMuted">#9E9E9E</color>
+    
+    <!-- Button states -->
+    <color name="buttonEnabled">@color/twilioRed</color>
+    <color name="buttonPressed">@color/twilioRedDark</color>
+    <color name="buttonDisabled">#DDDDDD</color>
+    
+    <!-- Recording indicator -->
+    <color name="recordingActive">#F44336</color>
+    
+    <!-- Standard colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#888888</color>
+    <color name="lightGray">#DDDDDD</color>
+    <color name="transparent">#00000000</color>
+    
+    <!-- Status colors -->
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FFC107</color>
+    <color name="error">#F44336</color>
+    <color name="info">#2196F3</color>
+</resources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Account Settings Category -->
+    <PreferenceCategory
+        android:key="category_account"
+        android:title="@string/pref_category_account">
+
+        <!-- Account SID -->
+        <EditTextPreference
+            android:key="account_sid"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="Your Twilio Account SID"
+            android:title="@string/pref_title_account_sid"
+            app:defaultValue="AC63ebb0ea82c28f7cc79b4eb2cbe1f1e5"
+            app:useSimpleSummaryProvider="true" />
+
+        <!-- Auth Token -->
+        <EditTextPreference
+            android:key="auth_token"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="Your Twilio Auth Token"
+            android:title="@string/pref_title_auth_token"
+            app:useSimpleSummaryProvider="false" />
+
+    </PreferenceCategory>
+
+    <!-- Call Settings Category -->
+    <PreferenceCategory
+        android:key="category_call"
+        android:title="@string/pref_category_call">
+
+        <!-- Auto Speaker Mode -->
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="auto_speaker"
+            android:summary="@string/pref_summary_auto_speaker"
+            android:title="@string/pref_title_auto_speaker" />
+
+        <!-- Recording Directory -->
+        <Preference
+            android:key="recording_directory"
+            android:title="@string/pref_title_recording_directory">
+            <intent
+                android:action="android.intent.action.OPEN_DOCUMENT_TREE"
+                android:targetPackage="com.example.twiliovoiceapp" />
+        </Preference>
+
+        <!-- Manage Phone Numbers -->
+        <Preference
+            android:key="manage_numbers"
+            android:summary="@string/pref_summary_manage_numbers"
+            android:title="@string/pref_title_manage_numbers">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="com.example.twiliovoiceapp.PhoneNumbersActivity"
+                android:targetPackage="com.example.twiliovoiceapp" />
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

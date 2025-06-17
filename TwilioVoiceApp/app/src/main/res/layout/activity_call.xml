@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/twilioBlue"
+    tools:context=".CallActivity">
+
+    <!-- Top Section: Caller Info -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardCallerInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Contact Avatar/Icon -->
+            <ImageView
+                android:id="@+id/imageViewContact"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/circle_background"
+                android:contentDescription="Contact"
+                android:padding="16dp"
+                android:src="@drawable/ic_person"
+                app:tint="@color/white" />
+
+            <!-- Phone Number/Contact Name -->
+            <TextView
+                android:id="@+id/textViewContactName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:textColor="@color/textPrimary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="+1 (555) 123-4567" />
+
+            <!-- Call Status -->
+            <TextView
+                android:id="@+id/textViewCallStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/call_status_connecting"
+                android:textColor="@color/callConnecting"
+                android:textSize="16sp" />
+
+            <!-- Call Duration -->
+            <Chronometer
+                android:id="@+id/chronometerCallDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:textColor="@color/textSecondary"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <!-- Twilio Number Being Used -->
+            <TextView
+                android:id="@+id/textViewTwilioNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:textColor="@color/textSecondary"
+                android:textSize="14sp"
+                tools:text="Calling from: +1 (555) 987-6543" />
+
+            <!-- Recording Indicator -->
+            <TextView
+                android:id="@+id/textViewRecordingIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded_recording_background"
+                android:paddingStart="12dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="4dp"
+                android:text="Recording"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Middle Section: Keypad (Initially Hidden) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardKeypad"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toTopOf="@id/cardCallControls"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardCallerInfo">
+
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            app:columnCount="3"
+            app:rowCount="4">
+
+            <!-- Row 1: 1, 2, 3 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypad1"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="1"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypad2"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="2"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypad3"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="3"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <!-- Row 2: 4, 5, 6 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypad4"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="4"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypad5"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="5"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypad6"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="6"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <!-- Row 3: 7, 8, 9 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypad7"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="7"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypad8"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="8"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypad9"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="9"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <!-- Row 4: *, 0, # -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypadStar"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="*"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypad0"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="0"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonKeypadHash"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="#"
+                android:textSize="24sp"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+        </androidx.gridlayout.widget.GridLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Bottom Section: Call Controls -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardCallControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Top Row Controls -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- Mute Button -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fabMute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/btn_mute"
+                        app:backgroundTint="@color/twilioBlueLight"
+                        app:fabSize="mini"
+                        app:srcCompat="@drawable/ic_mic"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/textViewMute"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/btn_mute"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Speaker Button -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fabSpeaker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/btn_speaker_on"
+                        app:backgroundTint="@color/twilioBlueLight"
+                        app:fabSize="mini"
+                        app:srcCompat="@drawable/ic_speaker_off"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/textViewSpeaker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/btn_speaker_on"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Keypad Button -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fabKeypad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/btn_keypad"
+                        app:backgroundTint="@color/twilioBlueLight"
+                        app:fabSize="mini"
+                        app:srcCompat="@drawable/ic_dialpad"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/btn_keypad"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Record Button -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fabRecord"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/btn_start_recording"
+                        app:backgroundTint="@color/twilioBlueLight"
+                        app:fabSize="mini"
+                        app:srcCompat="@drawable/ic_record"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/textViewRecord"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/btn_start_recording"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- End Call Button -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabEndCall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/btn_end_call"
+                app:backgroundTint="@color/callEnded"
+                app:fabSize="normal"
+                app:srcCompat="@drawable/ic_call_end"
+                app:tint="@color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

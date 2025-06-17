@@ -1,0 +1,119 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme using Material Components -->
+    <style name="Theme.TwilioVoiceApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/twilioRed</item>
+        <item name="colorPrimaryVariant">@color/twilioRedDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/twilioBlue</item>
+        <item name="colorSecondaryVariant">@color/twilioBlueLight</item>
+        <item name="colorOnSecondary">@color/white</item>
+        
+        <!-- Status bar color -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        
+        <!-- Accent color used for UI controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/twilioRed</item>
+        
+        <!-- Background colors -->
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/backgroundElevated</item>
+        <item name="colorOnSurface">@color/textPrimary</item>
+        <item name="colorOnBackground">@color/textPrimary</item>
+        
+        <!-- Text appearance -->
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+        <item name="android:textColorHint">@color/textDisabled</item>
+        
+        <!-- Button styles -->
+        <item name="materialButtonStyle">@style/Widget.TwilioVoiceApp.Button</item>
+        
+        <!-- Dialog styles -->
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.TwilioVoiceApp.MaterialAlertDialog</item>
+        
+        <!-- Card styles -->
+        <item name="cardViewStyle">@style/Widget.TwilioVoiceApp.CardView</item>
+    </style>
+    
+    <!-- Button style -->
+    <style name="Widget.TwilioVoiceApp.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/twilioRed</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    
+    <!-- Outlined Button style -->
+    <style name="Widget.TwilioVoiceApp.Button.OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/twilioRed</item>
+        <item name="android:textColor">@color/twilioRed</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    
+    <!-- Card style -->
+    <style name="Widget.TwilioVoiceApp.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="contentPadding">16dp</item>
+    </style>
+    
+    <!-- Dialog style -->
+    <style name="ThemeOverlay.TwilioVoiceApp.MaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorPrimary">@color/twilioRed</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.TwilioVoiceApp.PositiveButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.TwilioVoiceApp.NegativeButton</item>
+    </style>
+    
+    <!-- Dialog positive button style -->
+    <style name="Widget.TwilioVoiceApp.PositiveButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/twilioRed</item>
+    </style>
+    
+    <!-- Dialog negative button style -->
+    <style name="Widget.TwilioVoiceApp.NegativeButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/textSecondary</item>
+    </style>
+    
+    <!-- Call button style -->
+    <style name="Widget.TwilioVoiceApp.CallButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/twilioRed</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">28dp</item>
+        <item name="android:minWidth">56dp</item>
+        <item name="android:minHeight">56dp</item>
+    </style>
+    
+    <!-- Call action button style -->
+    <style name="Widget.TwilioVoiceApp.CallActionButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/twilioBlueLight</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">24dp</item>
+        <item name="android:minWidth">48dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+    
+    <!-- Text styles -->
+    <style name="TextAppearance.TwilioVoiceApp.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="TextAppearance.TwilioVoiceApp.Subtitle" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+    <style name="TextAppearance.TwilioVoiceApp.CallStatus" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="TextAppearance.TwilioVoiceApp.CallDuration" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+</resources>
